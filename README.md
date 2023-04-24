@@ -6,14 +6,10 @@
 
 ### Características:
 
-* El trabajo consiste en un video con el desarrollo de la prueba SQL del Modelo de integridad de datos de Desafío Latam para el módulo de SQL de la generación G27
+* El trabajo consideró la creación de un video con el desarrollo de la prueba SQL del Modelo de integridad de datos de Desafío Latam, para el módulo de SQL de la generación G27.
 
-* Dentro del archivo se realiza la conexión a la base de datos y se crea la tabla presentada en el desafío.
+* Se adjunta documento SQL con las consultas realizadas durante el proceso de creación de la base de datos y las consultas asociadas a cada punto.
 
-* Luego se copian las preguntas como comentarios de texto.
+* Se adjunta link al video:
 
-* Finalmente se responden las preguntas a través de consultas en formato SQL. 
-
-* Se adjunta en el repositorio el archivo SQL con mi nombre en el link:
-
-[https://github.com/Leonardo-villagran/consultas-en-multiples-tablas/blob/main/Tarea_3_leonardo_villagran.sql](https://github.com/Leonardo-villagran/consultas-en-multiples-tablas/blob/main/Tarea_3_leonardo_villagran.sql)# prueba_sql
+[![Alt text](https://img.youtube.com/vi/U7jzlh4OfCA/0.jpg)](https://youtu.be/U7jzlh4OfCA)
