@@ -49,7 +49,7 @@ INSERT INTO peliculas_tags (id_pelicula, id_tag) VALUES
   (2, 1),
   (2, 2);
   
- /* 3. Cuenta la cantidad de tags que tiene cada película. Si una película no tiene tags debe
+/* 3. Cuenta la cantidad de tags que tiene cada película. Si una película no tiene tags debe
 mostrar 0.
 */
 
@@ -111,62 +111,28 @@ INSERT INTO usuarios (nombre, edad) VALUES
 
 INSERT INTO respuestas (respuesta, usuario_id, pregunta_id) VALUES
   ('Bruce Wayne', 1, 1), -- Usuario 1 responde correctamente la pregunta 1
-  ('Bruce Wayne', 3, 1), -- Usuario 3 responde correctamente la pregunta 1
-  ('Tony Stark', 2, 1), -- Usuario 2 responde incorrectamente la pregunta 1
-  ('Peter Parker', 4, 1), -- Usuario 4 responde incorrectamente la pregunta 1
-  ('Clark Kent', 5, 1); -- Usuario 5 responde incorrectamente la pregunta 1
+  ('Bruce Wayne', 3, 1); -- Usuario 3 responde correctamente la pregunta 1
   
 -- la pregunta 2 debe estar contestada correctamente sólo por un usuario
 
 INSERT INTO respuestas (respuesta, usuario_id, pregunta_id) VALUES
-  ('Loki', 1, 2), -- Usuario 1 responde correctamente la pregunta 2
-  ('Peter Parker', 2, 2), -- Usuario 2 responde incorrectamente la pregunta 2
-  ('Bruce Banner', 3, 2), -- Usuario 3 responde incorrectamente la pregunta 2
-  ('Mary Jane Watson', 4, 2), -- Usuario 4 responde incorrectamente la pregunta 2
-  ('Clark Kent', 5, 2); -- Usuario 5 responde incorrectamente la pregunta 2
-  
--- Los 5 usuarios deben responder de forma errónea las preguntas 3 4 y 5
+  ('Loki', 1, 2); -- Usuario 1 responde correctamente la pregunta 2
+
+-- y las otras 2 respuestas deben estar incorrectas.
 
 INSERT INTO respuestas (respuesta, usuario_id, pregunta_id) VALUES
-  -- Pregunta 3 - Respuestas incorrectas
-  ('Tony Stark', 1, 3), -- Usuario 1 responde incorrectamente la pregunta 3 con 'Tony Stark'
-  ('Tony Stark', 2, 3), -- Usuario 2 responde incorrectamente la pregunta 3 con 'Tony Stark'
-  ('Tony Stark', 3, 3), -- Usuario 3 responde incorrectamente la pregunta 3 con 'Tony Stark'
-  ('Tony Stark', 4, 3), -- Usuario 4 responde incorrectamente la pregunta 3 con 'Tony Stark'
-  ('Tony Stark', 5, 3), -- Usuario 5 responde incorrectamente la pregunta 3 con 'Tony Stark'
-  -- Pregunta 4 - Respuestas incorrectas
-  ('Man of steel', 1, 4), -- Usuario 1 responde incorrectamente la pregunta 4 con 'Man of steel'
-  ('Man of steel', 2, 4), -- Usuario 2 responde incorrectamente la pregunta 4 con 'Man of steel'
-  ('Man of steel', 3, 4), -- Usuario 3 responde incorrectamente la pregunta 4 con 'Man of steel'
-  ('Man of steel', 4, 4), -- Usuario 4 responde incorrectamente la pregunta 4 con 'Man of steel'
-  ('Man of steel', 5, 4), -- Usuario 5 responde incorrectamente la pregunta 4 con 'Man of steel'
-  -- Pregunta 5 - Respuestas incorrectas
-  ('Clark Kent', 1, 5), -- Usuario 1 responde incorrectamente la pregunta 5 con 'Clark Kent'
-  ('Clark Kent', 2, 5), -- Usuario 2 responde incorrectamente la pregunta 5 con 'Clark Kent'
-  ('Clark Kent', 3, 5), -- Usuario 3 responde incorrectamente la pregunta 5 con 'Clark Kent'
-  ('Clark Kent', 4, 5), -- Usuario 4 responde incorrectamente la pregunta 5 con 'Clark Kent'
-  ('Clark Kent', 5, 5); -- Usuario 5 responde incorrectamente la pregunta 5 con 'Clark Kent'
+  ('Peter Parker', 2, 2), -- Usuario 2 responde incorrectamente la pregunta 2
+  ('Bruce Banner', 3, 2); -- Usuario 3 responde incorrectamente la pregunta 2
   
   
   /*6.- Cuenta la cantidad de respuestas correctas totales por usuario (independiente de la
 pregunta). (1 punto)*/ 
-
-/*Forma 1:*/
 
 SELECT u.nombre, COUNT(r.respuesta) as respuestas_correctas
 FROM usuarios as u
 inner JOIN respuestas as r ON u.id = r.usuario_id
 inner JOIN preguntas as p ON r.pregunta_id = p.id 
 WHERE r.respuesta=p.respuesta_correcta
-GROUP BY u.nombre
-ORDER BY respuestas_correctas DESC , u.nombre DESC;
-
-/*Forma 2:*/
-
-SELECT u.nombre, COUNT(r.respuesta = p.respuesta_correcta OR NULL) as respuestas_correctas
-FROM usuarios as u
-inner JOIN respuestas as r ON u.id = r.usuario_id
-inner JOIN preguntas as p ON r.pregunta_id = p.id 
 GROUP BY u.nombre
 ORDER BY respuestas_correctas DESC , u.nombre DESC;
 
